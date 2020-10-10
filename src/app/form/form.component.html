@@ -1,0 +1,37 @@
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="firstNameForm">First Name</label>
+      <input type="text" class="form-control" id="firstNameForm" formControlName="firstNameForm" required>
+      <div [hidden]="firstNameForm.pristine || firstNameForm.valid" class="alert alert-danger">First name required.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="lastNameForm">Last Name</label>
+      <input type="text" class="form-control" id="lastNameForm" formControlName="lastNameForm" required>
+      <div [hidden]="lastNameForm.pristine || lastNameForm.valid" class="alert alert-danger">Last name required.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="phoneForm">phoneForm Number</label>
+      <input type="text" class="form-control" id="phoneForm" formControlName="phoneForm">
+      <div [hidden]="phoneForm.pristine || phoneForm.valid" class="alert alert-danger">phoneForm number invalid.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="emailForm">emailForm Address</label>
+      <input type="text" class="form-control" id="emailForm" formControlName="emailForm">
+      <div [hidden]="emailForm.pristine || emailForm.valid" class="alert alert-danger">emailForm invalid.</div>
+    </div>
+    <button type="submit" class="btn btn-success" [disabled]="form.invalid">Finalize</button>
+  </form>
+
+  <div [hidden]="!submitted">
+    <table>
+      <tr>Your info: </tr>
+      <tr>{{firstName}} {{lastName}}</tr>
+      <tr>{{phone}}</tr>
+      <tr>{{email}}</tr>
+    </table>
+  </div>
+</div>
