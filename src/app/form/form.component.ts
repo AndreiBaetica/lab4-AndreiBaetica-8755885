@@ -19,7 +19,7 @@ export class FormComponent implements OnInit {
   form = this.builder.group({
     firstNameForm: ['', Validators.required],
     lastNameForm: ['', Validators.required],
-    phoneForm: ['', Validators.pattern('^[0-9]{1,50}$')],
+    phoneForm: ['', Validators.pattern('^[0-9]{10}$')],
     emailForm: ['', Validators.email]
   });
 
