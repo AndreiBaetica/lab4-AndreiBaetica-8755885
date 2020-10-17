@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
+import {DbService} from './firestone/db.service';
 
 @Component({
   selector: 'app-form',
@@ -14,7 +15,7 @@ export class FormComponent implements OnInit {
   phone;
   email;
 
-  constructor(private builder: FormBuilder) { }
+  constructor(private builder: FormBuilder, private store: DbService) { }
 
   form = this.builder.group({
     firstNameForm: ['', Validators.required],
@@ -35,6 +36,7 @@ export class FormComponent implements OnInit {
     this.lastName = this.lastNameForm.value;
     this.phone = this.phoneForm.value;
     this.email = this.emailForm.value;
+    this.store.upload(this.firstName, this.lastName, this.phone, this.email);
 
     this.form.reset();
   }
